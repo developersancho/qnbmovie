@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/btnLoadMore"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_margin="24dp"
+    android:backgroundTint="@android:color/holo_blue_light"
+    android:insetLeft="0dp"
+    android:insetTop="0dp"
+    android:insetRight="0dp"
+    android:insetBottom="0dp"
+    android:text="@string/btn_load_more"
+    android:textAllCaps="false"
+    android:textColor="@android:color/white"
+    android:textSize="18sp"
+    app:cornerRadius="8dp" />

@@ -1,0 +1,6 @@
+include ':common'
+include ':core:local'
+include ':core:manager'
+include ':core:remote'
+include ':app'
+rootProject.name = "qnbmovie"
