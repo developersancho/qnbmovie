@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.developersancho.common.CommonUtils
+import com.developersancho.common.utils.CommonUtils
 import com.developersancho.qnbmovie.databinding.RowLoadMoreBinding
 import com.developersancho.qnbmovie.databinding.RowMovieBinding
 import com.developersancho.remote.model.Movie
@@ -14,13 +14,10 @@ class MovieAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var onMovieClick: ((Movie) -> Unit)? = null
     var onLoadMore: (() -> Unit)? = null
 
-    private var items = mutableListOf<Movie>()
+    private var items = listOf<Movie>()
 
-    fun setData(movie: List<Movie>, refreshed: Boolean = false) {
-        if (refreshed) {
-            items.clear()
-        }
-        items.addAll(movie)
+    fun setData(movie: List<Movie>) {
+        items = movie
         notifyDataSetChanged()
     }
 

@@ -34,4 +34,12 @@ class DataManager(
         emit(dao.getMovies())
     }
 
+    override suspend fun findMovieByTitle(movieTitle: String): Flow<List<MovieEntity>> = flow {
+        emit(dao.findMovieByTitle(movieTitle))
+    }
+
+    override suspend fun deleteMovies() {
+        dao.delete()
+    }
+
 }

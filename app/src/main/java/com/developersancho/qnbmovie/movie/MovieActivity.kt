@@ -1,12 +1,17 @@
 package com.developersancho.qnbmovie.movie
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
+import com.amitshekhar.DebugDB
+import com.developersancho.common.MIN_SEARCH_CHAR
 import com.developersancho.common.MOVIE_DETAIL
-import com.developersancho.common.getMyColor
+import com.developersancho.common.extensions.clearSpaces
+import com.developersancho.common.extensions.getMyColor
+import com.developersancho.common.extensions.onChange
 import com.developersancho.qnbmovie.R
 import com.developersancho.qnbmovie.base.BaseViewBindingActivity
 import com.developersancho.qnbmovie.databinding.ActivityMovieBinding
@@ -21,16 +26,16 @@ class MovieActivity : BaseViewBindingActivity<ActivityMovieBinding>(
 ) {
     private val viewModel by viewModel<MovieViewModel>()
     private val movieAdapter by lazy { MovieAdapter() }
-    private var pageNumber = 1
-    private var refresh = false
+
 
     override fun initPresenter() {
         viewModel.setPresenter(this)
     }
 
     override fun initView() {
+        Log.d("Debug Database: ", DebugDB.getAddressLog())
         initAdapter()
-        viewModel.loadMore(page = pageNumber)
+        viewModel.loadMore(page = viewModel.pageNumber)
     }
 
     private fun initAdapter() {
@@ -59,9 +64,8 @@ class MovieActivity : BaseViewBindingActivity<ActivityMovieBinding>(
 
     override fun initListener() {
         binding.swipeMovie.setOnRefreshListener {
-            refresh = true
-            pageNumber = 1
-            viewModel.loadMore(page = pageNumber)
+            viewModel.pageNumber = 1
+            viewModel.loadMore(page = viewModel.pageNumber)
         }
 
         movieAdapter.onMovieClick = {
@@ -69,19 +73,26 @@ class MovieActivity : BaseViewBindingActivity<ActivityMovieBinding>(
         }
 
         movieAdapter.onLoadMore = {
-            viewModel.loadMore(page = pageNumber)
+            viewModel.loadMore(page = viewModel.pageNumber)
         }
 
         binding.btnSearch.setOnClickListener {
-            // TODO("minimum 3 karakter girmeden çalışmamalı
-            //  3 karakter ve sonrası için arama işlemi yapılacak
-            //  title üzerinden aranan filmler listelenmeli
-            //  locale kaydetmek gerekir mi?")
 
-            // TODO("-	Bu sayfanın en üstünde bir search bar olmalı.
-            //  Bu search bar minimum 3 karakter girmeden çalışmamalı.
-            //  Minimum karakter sayısından fazla karakter girildiğinde api servisleri kullanılmadan
-            //  o ana kadar lokale çekilmiş dayı filtremeli sadece aranan filmleri göstermeli.")
+        }
+
+        binding.etSearch.onChange {
+            searchQuery(it)
+        }
+    }
+
+    private fun searchQuery(keyword: String) {
+        var searchText = keyword
+        searchText = "%$searchText%"
+        if (keyword.clearSpaces().length >= MIN_SEARCH_CHAR) {
+            viewModel.isSearched = true
+            viewModel.findMovieByTitle(searchText)
+        } else if (keyword.clearSpaces().isEmpty()) {
+            viewModel.getMovies()
         }
     }
 
@@ -101,10 +112,19 @@ class MovieActivity : BaseViewBindingActivity<ActivityMovieBinding>(
     override fun observeUI() {
         super.observeUI()
         viewModel.movie.observe(this, Observer { movies ->
-            pageNumber++
-            movieAdapter.setData(movies, refresh)
-            refresh = false
-            binding.swipeMovie.isRefreshing = refresh
+            if (!viewModel.isSearched) {
+                viewModel.pageNumber++
+            }
+
+            movieAdapter.setData(movies)
+
+            binding.swipeMovie.isRefreshing = false
+
+            if (binding.etSearch.text.toString().clearSpaces().isEmpty()) {
+                if (viewModel.isSearched)
+                    viewModel.isSearched = false
+            }
+
         })
     }
 

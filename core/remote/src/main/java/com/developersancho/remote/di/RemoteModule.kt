@@ -1,6 +1,6 @@
 package com.developersancho.remote.di
 
-import com.developersancho.common.NetworkUtils
+import com.developersancho.common.utils.NetworkUtils
 import com.developersancho.remote.service.IMovieService
 import okhttp3.Cache
 import okhttp3.OkHttpClient

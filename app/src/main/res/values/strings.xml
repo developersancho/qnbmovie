@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">qnbmovie</string>
+    <string name="app_name">qnb-movie</string>
 
     <string name="hint_search_for_movies">Search for movies</string>
     <string name="btn_load_more">Load More</string>
     <string name="title_overview">OverView: </string>
     <string name="title_popularity">Popularity: </string>
     <string name="title_vote_average">Vote Average: </string>
+    <string name="message_min_three_character">You must enter minimum three character</string>
 
 </resources>

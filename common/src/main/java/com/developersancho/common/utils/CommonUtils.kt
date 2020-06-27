@@ -1,4 +1,4 @@
-package com.developersancho.common
+package com.developersancho.common.utils
 
 object CommonUtils {
 

@@ -13,4 +13,7 @@ interface MovieDao : BaseDao<MovieEntity> {
     @Query("SELECT * FROM movie_tbl")
     suspend fun getMovies(): List<MovieEntity>
 
+    @Query("SELECT * FROM movie_tbl WHERE title LIKE :movieTitle")
+    suspend fun findMovieByTitle(movieTitle: String): List<MovieEntity>
+
 }

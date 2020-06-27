@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.developersancho.common
+package com.developersancho.common.utils
 
 import android.annotation.SuppressLint
 import android.content.Context

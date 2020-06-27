@@ -1,4 +1,4 @@
-package com.developersancho.common
+package com.developersancho.common.extensions
 
 import android.app.Activity
 import android.widget.Toast

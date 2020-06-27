@@ -19,4 +19,8 @@ interface IDataManager {
 
     suspend fun getMovies(): Flow<List<MovieEntity>>
 
+    suspend fun findMovieByTitle(movieTitle: String): Flow<List<MovieEntity>>
+
+    suspend fun deleteMovies()
+
 }

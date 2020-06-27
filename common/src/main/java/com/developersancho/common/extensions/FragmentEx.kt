@@ -1,4 +1,4 @@
-package com.developersancho.common
+package com.developersancho.common.extensions
 
 import android.widget.Toast
 import androidx.core.content.ContextCompat
