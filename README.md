@@ -39,7 +39,7 @@ A sample app consist of 2 screens: Movie and Movie Detail.
 Multi-Module
 -----------
 
-![Module Structure](screenshots/project-module.png "Multi-Module")
+![Module Structure](screenshots/project_module.png "Multi-Module")
 
 
 Screenshots
