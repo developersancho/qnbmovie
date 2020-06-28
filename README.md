@@ -26,7 +26,7 @@ over RxJava 2.
 
 Koin is used for dependency injection.
 
-Coil is used for image loading and Timber for logging.
+Coil is used for image loading.
 
 MVVM for Architecture Design Pattern
 
