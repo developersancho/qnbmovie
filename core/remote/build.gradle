@@ -1,35 +1,34 @@
+import com.developersancho.buildsrc.Libs
+
 apply from: "$rootDir/common-libs.gradle"
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation(Libs.coreKtx)
+    implementation(Libs.appCompat)
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7")
+    implementation(Libs.coroutineCore)
+    implementation(Libs.coroutineAndroid)
 
-    implementation("com.google.code.gson:gson:2.8.6")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.7.2")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.7.2")
-    implementation("org.conscrypt:conscrypt-android:2.4.0")
+    implementation(Libs.gson)
+    implementation(Libs.retrofit)
+    implementation(Libs.converterGson)
+    implementation(Libs.okhttp)
+    implementation(Libs.loggingInterceptor)
+    implementation(Libs.conscrypt)
 
-    implementation("org.koin:koin-core:2.1.5")
-    implementation("org.koin:koin-android:2.1.5")
+    implementation(Libs.koinAndroid)
+    implementation(Libs.koinCore)
 
-    implementation("androidx.room:room-ktx:2.2.5")
-    kapt("androidx.room:room-compiler:2.2.5")
+    testImplementation(Libs.coroutineTest)
+    testImplementation(Libs.mockwebserver)
+    testImplementation(Libs.koinTest)
+    testImplementation(Libs.roboelectric)
 
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7")
-    testImplementation("com.squareup.okhttp3:mockwebserver:4.6.0")
-    testImplementation("org.koin:koin-test:2.1.5")
-    testImplementation("org.robolectric:robolectric:4.3.1")
-
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation(Libs.junit)
+    androidTestImplementation(Libs.junitExt)
+    androidTestImplementation(Libs.espressoCore)
 
     implementation project(path: ':common')
 }
