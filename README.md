@@ -45,8 +45,8 @@ Multi-Module
 Screenshots
 -----------
 
-![MovieActivity](screenshots/splash.png "Movie")
-![MovieDetailActivity](screenshots/favorites.png "Movie Detail")
+![MovieActivity](screenshots/movie.png "Movie")
+![MovieDetailActivity](screenshots/movie_detail.png "Movie Detail")
 
 Libraries Used
 --------------
@@ -64,7 +64,7 @@ categories:
   multidex and automated testing.
   * [AppCompat][1] - Degrade gracefully on older versions of Android.
   * [Android KTX][2] - Write more concise, idiomatic Kotlin code.
-  * [Test][4] - An Android testing framework for unit and runtime UI tests.
+  * [Test][4] - An Android testing framework for unit tests.
 * [Architecture][10] - A collection of libraries that help you design robust, testable, and
   maintainable apps. Start with classes for managing your UI component lifecycle and handling data
   persistence.
