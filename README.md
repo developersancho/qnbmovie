@@ -15,7 +15,7 @@ Architecture principles follow Google recommended [Guide to app architecture](ht
 The application is written entirely in Kotlin.
 
 Android Jetpack is used as an Architecture glue including but not limited to ViewModel, LiveData,
-Lifecycles, Navigation, Room and Data Binding. See a complete list in "Libraries used" section.
+Lifecycles, Room and View Binding. See a complete list in "Libraries used" section.
 
 The application does network HTTP requests via Retrofit, OkHttp and GSON. Loaded data  and favorite list is saved to
 SQL based database Room, which serves as single source of truth and support offline mode.
